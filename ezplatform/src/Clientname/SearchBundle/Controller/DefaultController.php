@@ -51,8 +51,10 @@ class DefaultController extends Controller
     public function getArticlesAction($parentLocationId)
     {
         $query = new LocationQuery();
-        $location = $this->locationService->loadLocation($parentLocationId);
-        $query->filter = new Criterion\Subtree($location->pathString);
+        $query->filter = new Criterion\LogicalAnd([
+            new Criterion\Visibility(Criterion\Visibility::VISIBLE),
+            new Criterion\ParentLocationId($parentLocationId)
+        ]);
 
         $searchResult = $this->searchService->findContent($query);
         if (null === $searchResult) {
