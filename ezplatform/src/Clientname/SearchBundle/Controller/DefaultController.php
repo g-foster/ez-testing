@@ -46,6 +46,34 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/category/{category}", name="category", requirements={"category": "\d+"})
+     * @Template("SearchBundle::Default/category.html.twig")
+     */
+    public function categoryAction($category)
+    {
+        return array('category' => $category);
+    }
+
+    /**
+     * @Template("SearchBundle::Default/article-list.html.twig")
+     */
+    public function getArticlesByCategoryAction($category)
+    {
+        $query = new LocationQuery();
+        $query->filter = new Criterion\LogicalAnd([
+            new Criterion\Visibility(Criterion\Visibility::VISIBLE),
+            new Criterion\Field('category', Criterion\Operator::EQ, $category)
+        ]);
+
+        $searchResult = $this->searchService->findContent($query);
+        if (null === $searchResult) {
+            /// ... throw exception ...
+        }
+
+        return array('searchHits' => $searchResult->searchHits);
+    }
+
+    /**
      * @Template("SearchBundle::Default/article-list.html.twig")
      */
     public function getArticlesAction($parentLocationId)
