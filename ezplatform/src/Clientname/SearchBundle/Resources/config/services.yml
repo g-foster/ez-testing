@@ -1,0 +1,10 @@
+services:
+#    search.example:
+#        class: Clientname\SearchBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    clientname.search.controller.default:
+        class: Clientname\SearchBundle\Controller\DefaultController
+        arguments:
+            - '@ezpublish.api.service.search'
+            - '@ezpublish.api.service.location'
+            - '@ezpublish.config.resolver'
