@@ -2,15 +2,41 @@
 
 namespace Clientname\SearchBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use eZ\Publish\API\Repository\Values\Content\LocationQuery;
+use eZ\Publish\API\Repository\SearchService;
+use eZ\Publish\Core\SignalSlot\LocationService;
+use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 
 /**
  * @Route(service="clientname.search.controller.default")
  */
 class DefaultController extends Controller
 {
+    /**
+     * @var SearchService
+     */
+    private $searchService;
+
+    /**
+     * @var LocationService
+     */
+    private $locationService;
+
+    /**
+     * @param SearchService $searchService
+     * @param SearchLocation $searchLocation
+     */
+    public function __construct(
+        SearchService $searchService,
+        LocationService $locationService
+    ) {
+        $this->searchService = $searchService;
+        $this->locationService = $locationService;
+    }
+
     /**
      * @Route("/", name="index")
      * @Template("SearchBundle::Default/index.html.twig")
@@ -22,7 +48,17 @@ class DefaultController extends Controller
     /**
      * @Template("SearchBundle::Default/article-list.html.twig")
      */
-    public function getArticlesAction()
+    public function getArticlesAction($parentLocationId)
     {
+        $query = new LocationQuery();
+        $location = $this->locationService->loadLocation($parentLocationId);
+        $query->filter = new Criterion\Subtree($location->pathString);
+
+        $searchResult = $this->searchService->findContent($query);
+        if (null === $searchResult) {
+            /// ... throw exception ...
+        }
+
+        return array('searchHits' => $searchResult->searchHits);
     }
 }

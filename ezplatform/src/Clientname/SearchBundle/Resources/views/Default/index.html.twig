@@ -11,7 +11,9 @@
 {% endblock %}
 
 {% block content %}
-    {{ render(controller('clientname.search.controller.default:getArticlesAction')) }}
+    {{ render(controller('clientname.search.controller.default:getArticlesAction', {
+		parentLocationId: 52,
+	}))}}
 {% endblock %}
 
 {% block footer %}
