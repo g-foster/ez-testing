@@ -26,6 +26,7 @@ class DefaultController extends Controller
     /**
      * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
      * @Template("ClientnameSearchBundle::Default/category.html.twig")
+     * @Cache(smaxage="0")
      */
     public function categoryAction($category)
     {
