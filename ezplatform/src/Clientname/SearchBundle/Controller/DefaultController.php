@@ -9,6 +9,7 @@ use eZ\Publish\API\Repository\Values\Content\LocationQuery;
 use eZ\Publish\API\Repository\SearchService;
 use eZ\Publish\Core\SignalSlot\LocationService;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
+use Clientname\SearchBundle\Entity\SimpleSearch;
 
 /**
  * @Route(service="clientname.search.controller.default")
@@ -38,7 +39,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="clientname_search_index")
      * @Template("SearchBundle::Default/index.html.twig")
      */
     public function indexAction()
@@ -46,7 +47,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/category/{category}", name="category", requirements={"category": "\d+"})
+     * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
      * @Template("SearchBundle::Default/category.html.twig")
      */
     public function categoryAction($category)
@@ -90,5 +91,14 @@ class DefaultController extends Controller
         }
 
         return array('searchHits' => $searchResult->searchHits);
+    }
+
+    /**
+     * @Template("SearchBundle::Default/searchbox.html.twig")
+     */
+    public function searchBoxAction()
+    {
+        $form = $this->createForm('Clientname\SearchBundle\Form\Type\SimpleSearchType', new SimpleSearch());
+        return array('form' => $form->createView());
     }
 }
