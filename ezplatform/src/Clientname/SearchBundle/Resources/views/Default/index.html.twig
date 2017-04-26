@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ render(controller('clientname.search.controller.default:getArticlesAction', {
+    {{ render(controller('SearchBundle:Default:getArticles', {
 		parentLocationId: 54,
 	}))}}
 {% endblock %}

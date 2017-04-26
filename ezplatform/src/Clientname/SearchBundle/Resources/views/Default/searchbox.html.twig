@@ -1,7 +1,7 @@
 <!-- Search Section -->
 <div class="w3-container w3-padding-large w3-grey">
   <h4 id="search"><b>Search</b></h4>
-    {{ form_start( form, { 'action': path('clientname_search_searchbox'), 'attr': { 'class': 'col-md-4 col-xs-6 form-search' } } ) }}
+    {{ form_start( form, { 'action': path('clientname_search_dosearch'), 'attr': { 'class': 'col-md-4 col-xs-6 form-search' } } ) }}
         <div class="w3-section">
             <label>Search terms</label>
             {{ form_widget( form.searchText, { 'attr': {'class': 'w3-input w3-border', 'placeholder': 'Search text'|trans } } ) }}

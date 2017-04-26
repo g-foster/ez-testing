@@ -1,6 +1,0 @@
-services:
-    clientname.search.controller.default:
-        class: Clientname\SearchBundle\Controller\DefaultController
-        arguments:
-            - '@ezpublish.api.service.search'
-            - '@ezpublish.api.service.location'

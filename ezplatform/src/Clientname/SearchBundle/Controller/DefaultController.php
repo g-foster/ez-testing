@@ -11,32 +11,23 @@ use eZ\Publish\Core\SignalSlot\LocationService;
 use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use Clientname\SearchBundle\Entity\SimpleSearch;
 
-/**
- * @Route(service="clientname.search.controller.default")
- */
+
 class DefaultController extends Controller
 {
     /**
      * @var SearchService
-     */
+     *
     private $searchService;
 
     /**
-     * @var LocationService
-     */
-    private $locationService;
-
-    /**
      * @param SearchService $searchService
-     * @param SearchLocation $searchLocation
-     */
+     *
     public function __construct(
-        SearchService $searchService,
-        LocationService $locationService
+        SearchService $searchService
     ) {
         $this->searchService = $searchService;
-        $this->locationService = $locationService;
     }
+    */
 
     /**
      * @Route("/", name="clientname_search_index")
@@ -60,6 +51,9 @@ class DefaultController extends Controller
      */
     public function getArticlesByCategoryAction($category)
     {
+        return array('searchHits' => array());
+
+        /*
         $query = new LocationQuery();
         $query->filter = new Criterion\LogicalAnd([
             new Criterion\Visibility(Criterion\Visibility::VISIBLE),
@@ -72,6 +66,7 @@ class DefaultController extends Controller
         }
 
         return array('searchHits' => $searchResult->searchHits);
+        */
     }
 
     /**
@@ -79,6 +74,9 @@ class DefaultController extends Controller
      */
     public function getArticlesAction($parentLocationId)
     {
+        return array('searchHits' => array());
+
+        /*
         $query = new LocationQuery();
         $query->filter = new Criterion\LogicalAnd([
             new Criterion\Visibility(Criterion\Visibility::VISIBLE),
@@ -91,14 +89,23 @@ class DefaultController extends Controller
         }
 
         return array('searchHits' => $searchResult->searchHits);
+        */
     }
 
     /**
      * @Template("SearchBundle::Default/searchbox.html.twig")
      */
-    public function searchBoxAction()
+    public function showSearchBoxAction()
     {
         $form = $this->createForm('Clientname\SearchBundle\Form\Type\SimpleSearchType', new SimpleSearch());
         return array('form' => $form->createView());
+    }
+
+    /**
+     * @Route("/", name="clientname_search_dosearch")
+     */
+    public function doSearch()
+    {
+
     }
 }
