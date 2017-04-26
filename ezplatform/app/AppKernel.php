@@ -50,7 +50,7 @@ class AppKernel extends Kernel
             new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
-            new Clientname\SearchBundle\SearchBundle(),
+            new Clientname\SearchBundle\ClientnameSearchBundle(),
         );
 
         switch ($this->getEnvironment()) {

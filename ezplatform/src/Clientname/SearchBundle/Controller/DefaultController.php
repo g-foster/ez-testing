@@ -31,7 +31,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/", name="clientname_search_index")
-     * @Template("SearchBundle::Default/index.html.twig")
+     * @Template("ClientnameSearchBundle::Default/index.html.twig")
      */
     public function indexAction()
     {
@@ -39,7 +39,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
-     * @Template("SearchBundle::Default/category.html.twig")
+     * @Template("ClientnameSearchBundle::Default/category.html.twig")
      */
     public function categoryAction($category)
     {
@@ -47,7 +47,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Template("SearchBundle::Default/article-list.html.twig")
+     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
      */
     public function getArticlesByCategoryAction($category)
     {
@@ -70,7 +70,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Template("SearchBundle::Default/article-list.html.twig")
+     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
      */
     public function getArticlesAction($parentLocationId)
     {
@@ -93,7 +93,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Template("SearchBundle::Default/searchbox.html.twig")
+     * @Template("ClientnameSearchBundle::Default/searchbox.html.twig")
      */
     public function showSearchBoxAction()
     {

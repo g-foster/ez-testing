@@ -1,5 +1,5 @@
 search:
-    resource: "@SearchBundle/Controller/"
+    resource: "@ClientnameSearchBundle/Controller/"
     type:     annotation
     prefix:   /
 
