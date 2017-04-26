@@ -5,29 +5,13 @@ namespace Clientname\SearchBundle\Controller;
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use eZ\Publish\API\Repository\Values\Content\LocationQuery;
-use eZ\Publish\API\Repository\SearchService;
-use eZ\Publish\Core\SignalSlot\LocationService;
-use eZ\Publish\API\Repository\Values\Content\Query\Criterion;
 use Clientname\SearchBundle\Entity\SimpleSearch;
-
+use JMS\DiExtraBundle\Annotation as DI;
 
 class DefaultController extends Controller
 {
-    /**
-     * @var SearchService
-     *
-    private $searchService;
-
-    /**
-     * @param SearchService $searchService
-     *
-    public function __construct(
-        SearchService $searchService
-    ) {
-        $this->searchService = $searchService;
-    }
-    */
+    /** @DI\Inject("ez.articlerepository") */
+    private $articleRepository;
 
     /**
      * @Route("/", name="clientname_search_index")
@@ -51,22 +35,7 @@ class DefaultController extends Controller
      */
     public function getArticlesByCategoryAction($category)
     {
-        return array('searchHits' => array());
-
-        /*
-        $query = new LocationQuery();
-        $query->filter = new Criterion\LogicalAnd([
-            new Criterion\Visibility(Criterion\Visibility::VISIBLE),
-            new Criterion\Field('category', Criterion\Operator::EQ, $category)
-        ]);
-
-        $searchResult = $this->searchService->findContent($query);
-        if (null === $searchResult) {
-            /// ... throw exception ...
-        }
-
-        return array('searchHits' => $searchResult->searchHits);
-        */
+        return $this->articleRepository->getArticlesByFieldValue('category', $category);
     }
 
     /**
@@ -74,22 +43,7 @@ class DefaultController extends Controller
      */
     public function getArticlesAction($parentLocationId)
     {
-        return array('searchHits' => array());
-
-        /*
-        $query = new LocationQuery();
-        $query->filter = new Criterion\LogicalAnd([
-            new Criterion\Visibility(Criterion\Visibility::VISIBLE),
-            new Criterion\ParentLocationId($parentLocationId)
-        ]);
-
-        $searchResult = $this->searchService->findContent($query);
-        if (null === $searchResult) {
-            /// ... throw exception ...
-        }
-
-        return array('searchHits' => $searchResult->searchHits);
-        */
+        return $this->articleRepository->getArticlesByParentLocation($parentLocationId);
     }
 
     /**
