@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ render(controller('ClientnameSearchBundle:Default:getArticles', {
+    {{ render_esi(controller('ClientnameSearchBundle:Default:getArticles', {
 		parentLocationId: 54,
 	}))}}
 {% endblock %}

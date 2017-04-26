@@ -5,6 +5,7 @@ namespace Clientname\SearchBundle\Controller;
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Clientname\SearchBundle\Entity\SimpleSearch;
 use JMS\DiExtraBundle\Annotation as DI;
 
@@ -16,6 +17,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="clientname_search_index")
      * @Template("ClientnameSearchBundle::Default/index.html.twig")
+     * @Cache(smaxage="0")
      */
     public function indexAction()
     {
@@ -32,6 +34,7 @@ class DefaultController extends Controller
 
     /**
      * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesByCategoryAction($category)
     {
@@ -40,6 +43,7 @@ class DefaultController extends Controller
 
     /**
      * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesAction($parentLocationId)
     {

@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ render(controller('ClientnameSearchBundle:Default:getArticlesByCategory', {
+    {{ render_esi(controller('ClientnameSearchBundle:Default:getArticlesByCategory', {
 		category: category,
 	}))}}
 {% endblock %}
