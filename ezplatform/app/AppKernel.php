@@ -53,6 +53,7 @@ class AppKernel extends Kernel
             new Clientname\SearchBundle\ClientnameSearchBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
+            new Clientname\UserBundle\ClientnameUserBundle(),
         );
 
         switch ($this->getEnvironment()) {

@@ -2,6 +2,10 @@ search:
     resource: "@ClientnameSearchBundle/Controller/"
     type:     annotation
     prefix:   /
+user:
+    resource: "@ClientnameUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
 
 login:
     path:   /login
