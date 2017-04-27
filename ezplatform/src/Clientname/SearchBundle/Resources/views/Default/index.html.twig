@@ -10,7 +10,11 @@
 	{% include 'pagelayout_upper.html.twig' %}
 {% endblock %}
 
-Hello Homepage!
+{% block content %}
+    {{ render(controller('ClientnameSearchBundle:Default:getArticles', {
+		parentLocationId: 54,
+	}))}}
+{% endblock %}
 
 {% block footer %}
 	{% include 'pagelayout_footer.html.twig' %}
