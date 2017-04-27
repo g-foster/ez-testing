@@ -4,67 +4,20 @@ namespace Clientname\SearchBundle\Controller;
 
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use Clientname\SearchBundle\Entity\SimpleSearch;
-use JMS\DiExtraBundle\Annotation as DI;
+
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    /** @DI\Inject("ez.articlerepository") */
-    private $articleRepository;
-
     /**
      * @Route("/", name="clientname_search_index")
-     * @Template("ClientnameSearchBundle::Default/index.html.twig")
-     * @Cache(smaxage="0")
      */
     public function indexAction()
     {
-    }
-
-    /**
-     * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
-     * @Template("ClientnameSearchBundle::Default/category.html.twig")
-     * @Cache(smaxage="0")
-     */
-    public function categoryAction($category)
-    {
-        return array('category' => $category);
-    }
-
-    /**
-     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
-     * @Cache(smaxage="600")
-     */
-    public function getArticlesByCategoryAction($category)
-    {
-        return $this->articleRepository->getArticlesByFieldValue('category', $category);
-    }
-
-    /**
-     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
-     * @Cache(smaxage="600")
-     */
-    public function getArticlesAction($parentLocationId)
-    {
-        return $this->articleRepository->getArticlesByParentLocation($parentLocationId);
-    }
-
-    /**
-     * @Template("ClientnameSearchBundle::Default/searchbox.html.twig")
-     */
-    public function showSearchBoxAction()
-    {
-        $form = $this->createForm('Clientname\SearchBundle\Form\Type\SimpleSearchType', new SimpleSearch());
-        return array('form' => $form->createView());
-    }
-
-    /**
-     * @Route("/", name="clientname_search_dosearch")
-     */
-    public function doSearch()
-    {
-
+        $response = new Response();
+        $response->headers->set('Content-Type', 'text/html');
+        $response->setContent('<html><body><h1>Hello world!</h1></body></html>');
+        $response->setStatusCode(Response::HTTP_OK);
+        return $response;
     }
 }

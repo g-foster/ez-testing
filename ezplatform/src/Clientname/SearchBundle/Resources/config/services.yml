@@ -1,5 +1,0 @@
-services:
-    ez.articlerepository:
-        class:     Inviqa\eZ\ArticleRepository
-        arguments:
-            - '@ezpublish.api.service.search'
