@@ -13,5 +13,6 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 }
 
 putenv('SYMFONY_ENV=dev');
+putenv('SYMFONY_HTTP_CACHE=true');
 
 require 'app.php';

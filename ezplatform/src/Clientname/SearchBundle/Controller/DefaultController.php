@@ -16,7 +16,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="clientname_search_index")
      * @Template("ClientnameSearchBundle::Default/index.html.twig")
-     * @Cache(smaxage="600")
+     * @Cache(smaxage="0")
      */
     public function indexAction()
     {
@@ -34,6 +34,7 @@ class DefaultController extends Controller
     /**
      * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
      * @Template("ClientnameSearchBundle::Default/category.html.twig")
+     * @Cache(smaxage="0")
      */
     public function categoryAction($category)
     {
@@ -42,6 +43,7 @@ class DefaultController extends Controller
 
     /**
      * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesByCategoryAction($category)
     {

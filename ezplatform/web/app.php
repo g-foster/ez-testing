@@ -44,7 +44,8 @@ if (!$useDebugging) {
 // Depending on the SYMFONY_HTTP_CACHE environment variable, tells whether the internal HTTP Cache mechanism is to be used.
 // If not set, or "", it is auto activated if _not_ in "dev" environment.
 if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache === '') {
-    $useHttpCache = $environment !== 'dev';
+    //$useHttpCache = $environment !== 'dev';
+    $useHttpCache = true;
 }
 
 // Load HTTP Cache ...
