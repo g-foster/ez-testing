@@ -27,4 +27,21 @@ class DefaultController extends Controller
     {
         return $this->articleRepository->getArticlesByParentLocation($parentLocationId);
     }
+
+    /**
+     * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
+     * @Template("ClientnameSearchBundle::Default/category.html.twig")
+     */
+    public function categoryAction($category)
+    {
+        return array('category' => $category);
+    }
+
+    /**
+     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     */
+    public function getArticlesByCategoryAction($category)
+    {
+        return $this->articleRepository->getArticlesByFieldValue('category', $category);
+    }
 }
