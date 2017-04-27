@@ -6,6 +6,7 @@ use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 class DefaultController extends Controller
 {
@@ -15,6 +16,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="clientname_search_index")
      * @Template("ClientnameSearchBundle::Default/index.html.twig")
+     * @Cache(smaxage="600")
      */
     public function indexAction()
     {
@@ -22,6 +24,7 @@ class DefaultController extends Controller
 
     /**
      * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesAction($parentLocationId)
     {
