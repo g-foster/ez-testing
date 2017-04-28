@@ -21,12 +21,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $scienceHide = false;
-        $cookies = $request->cookies;
-        if ($cookies->has('science_hide') && $cookies->get('science_hide')) {
-            $scienceHide = true;
-        }
-        return array('scienceHide' => $scienceHide);
     }
 
     /**

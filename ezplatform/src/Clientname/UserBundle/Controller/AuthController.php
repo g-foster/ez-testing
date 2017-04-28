@@ -31,7 +31,7 @@ class AuthController extends Controller
         }
 
         $form = $this->createForm('Clientname\UserBundle\Form\Type\LoginType', new Login());
-        
+
         return array('form' => $form->createView(), 'username' => $username);
     }
 
@@ -44,18 +44,6 @@ class AuthController extends Controller
         $form->handleRequest($request);
         $loginEntity = $form->getData();
 
-        $repo = $this->getDoctrine()->getRepository('ClientnameUserBundle:UserPrefs');
-        $userPrefs = $repo->findOneBy(array('username' => $loginEntity->username));
-
-        $response = $this->redirect('/');
-        if (null === $userPrefs) {
-            $response->headers->clearCookie('username');
-            $response->headers->clearCookie('science_hide');
-        } else {
-            $response->headers->setCookie(new Cookie('username', $userPrefs->getUsername()));
-            $response->headers->setCookie(new Cookie('science_hide', $userPrefs->getScienceHide()));
-        }
-
-        return $response;
+        var_dump($loginEntity); exit;
     }
 }
