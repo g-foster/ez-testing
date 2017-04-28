@@ -24,15 +24,35 @@ class UserPrefs
     /**
      * @ORM\Column(type="integer")
      */
-    private $biograpy_hide;
+    private $biographyHide;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $fiction_hide;
+    private $fictionHide;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $science_hide;
+    private $scienceHide;
+
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    public function getBiographyHide()
+    {
+        return $this->biographyHide;
+    }
+
+    public function getScienceHide()
+    {
+        return $this->scienceHide;
+    }
+
+    public function getFictionHide()
+    {
+        return $this->fictionHide;
+    }
 }

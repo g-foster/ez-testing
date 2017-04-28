@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -18,8 +19,14 @@ class DefaultController extends Controller
      * @Template("ClientnameSearchBundle::Default/index.html.twig")
      * @Cache(smaxage="0")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $scienceHide = false;
+        $cookies = $request->cookies;
+        if ($cookies->has('science_hide') && $cookies->get('science_hide')) {
+            $scienceHide = true;
+        }
+        return array('scienceHide' => $scienceHide);
     }
 
     /**
