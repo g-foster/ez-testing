@@ -1,9 +1,0 @@
-{% include 'ClientnameSearchBundle:Default:bundle_header.html.twig' %}
-
-{% block content %}
-    {{ render_esi(controller('ClientnameSearchBundle:Default:getArticlesByCategory', {
-		category: category,
-	}))}}
-{% endblock %}
-
-{% include 'ClientnameSearchBundle:Default:bundle_footer.html.twig' %}

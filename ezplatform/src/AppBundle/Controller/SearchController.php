@@ -1,6 +1,6 @@
 <?php
 
-namespace Clientname\SearchBundle\Controller;
+namespace AppBundle\Controller;
 
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,14 +9,14 @@ use JMS\DiExtraBundle\Annotation as DI;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class SearchController extends Controller
 {
     /** @DI\Inject("inviqa.ez.articlerepository") */
     private $articleRepository;
 
     /**
-     * @Route("/", name="clientname_search_index")
-     * @Template("ClientnameSearchBundle::Default/index.html.twig")
+     * @Route("/", name="app_search_index")
+     * @Template("AppBundle::Search/index.html.twig")
      * @Cache(smaxage="0")
      */
     public function indexAction(Request $request)
@@ -30,7 +30,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Template("AppBundle::Search/article-list.html.twig")
      * @Cache(smaxage="600")
      */
     public function getArticlesAction($parentLocationId)
@@ -39,8 +39,8 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/category/{category}", name="clientname_search_category", requirements={"category": "\d+"})
-     * @Template("ClientnameSearchBundle::Default/category.html.twig")
+     * @Route("/category/{category}", name="app_search_category", requirements={"category": "\d+"})
+     * @Template("AppBundle::Search/category.html.twig")
      * @Cache(smaxage="0")
      */
     public function categoryAction($category)
@@ -49,7 +49,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Template("ClientnameSearchBundle::Default/article-list.html.twig")
+     * @Template("AppBundle::Search/article-list.html.twig")
      * @Cache(smaxage="600")
      */
     public function getArticlesByCategoryAction($category)

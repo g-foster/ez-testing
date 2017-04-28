@@ -50,10 +50,9 @@ class AppKernel extends Kernel
             new EzSystems\EzContentOnTheFlyBundle\EzSystemsEzContentOnTheFlyBundle(),
             new Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle(),
             new JMS\TranslationBundle\JMSTranslationBundle(),
-            new Clientname\SearchBundle\ClientnameSearchBundle(),
+            new AppBundle\AppBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\AopBundle\JMSAopBundle(),
-            new Clientname\UserBundle\ClientnameUserBundle(),
         );
 
         switch ($this->getEnvironment()) {

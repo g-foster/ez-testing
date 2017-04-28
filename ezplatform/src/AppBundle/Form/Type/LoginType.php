@@ -1,5 +1,5 @@
 <?php
-namespace Clientname\UserBundle\Form\Type;
+namespace AppBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,11 +20,11 @@ class LoginType extends AbstractType
 
     public function getName()
     {
-        return 'clientname_user_login';
+        return 'app_auth_login';
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array('data_class' => 'Clientname\UserBundle\Entity\Login'));
+        $resolver->setDefaults(array('data_class' => 'AppBundle\Entity\Login'));
     }
 }
