@@ -47,6 +47,8 @@ if (($useHttpCache = getenv('SYMFONY_HTTP_CACHE')) === false || $useHttpCache ==
     $useHttpCache = $environment !== 'dev';
 }
 
+$useHttpCache = true;
+
 // Load HTTP Cache ...
 if ($useHttpCache) {
     // The standard HttpCache implementation can be overridden by setting the SYMFONY_HTTP_CACHE_CLASS environment variable.

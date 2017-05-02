@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\DiExtraBundle\Annotation as DI;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 
 class SearchController extends Controller
 {
@@ -16,6 +17,7 @@ class SearchController extends Controller
     /**
      * @Route("/", name="app_search_index")
      * @Template("AppBundle::Search/index.html.twig")
+     * @Cache(smaxage="600")
      */
     public function indexAction(Request $request)
     {
@@ -32,6 +34,7 @@ class SearchController extends Controller
     /**
      * @Route("/category/{category}", name="app_search_category", requirements={"category": "\d+"})
      * @Template("AppBundle::Search/category.html.twig")
+     * @Cache(smaxage="600")
      */
     public function categoryAction($category)
     {
