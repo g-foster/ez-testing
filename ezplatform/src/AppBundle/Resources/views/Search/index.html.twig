@@ -1,7 +1,7 @@
 {% include 'AppBundle:Bundle:header.html.twig' %}
 
 {% block content %}
-    {{ render(controller('AppBundle:Search:getArticles', {
+    {{ render_esi(controller('AppBundle:Search:getArticles', {
 		parentLocationId: 54,
 	}))}}
 {% endblock %}

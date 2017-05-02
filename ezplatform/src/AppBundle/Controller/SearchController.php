@@ -17,7 +17,7 @@ class SearchController extends Controller
     /**
      * @Route("/", name="app_search_index")
      * @Template("AppBundle::Search/index.html.twig")
-     * @Cache(smaxage="600")
+     * @Cache(smaxage="000")
      */
     public function indexAction(Request $request)
     {
@@ -25,6 +25,7 @@ class SearchController extends Controller
 
     /**
      * @Template("AppBundle::Search/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesAction($parentLocationId)
     {
@@ -34,7 +35,7 @@ class SearchController extends Controller
     /**
      * @Route("/category/{category}", name="app_search_category", requirements={"category": "\d+"})
      * @Template("AppBundle::Search/category.html.twig")
-     * @Cache(smaxage="600")
+     * @Cache(smaxage="0")
      */
     public function categoryAction($category)
     {
@@ -43,6 +44,7 @@ class SearchController extends Controller
 
     /**
      * @Template("AppBundle::Search/article-list.html.twig")
+     * @Cache(smaxage="600")
      */
     public function getArticlesByCategoryAction($category)
     {
