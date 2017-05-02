@@ -1,0 +1,14 @@
+/api/
+composer.lock
+*-coverage.js
+/.idea/
+/nbproject/
+node_modules/
+.php_cs.cache
+.project
+Resources/public/vendors/
+Tests/instrument/
+Tests/js/alloyeditor/toolbars/assets/*.js
+Tests/js/alloyeditor/buttons/assets/*.js
+Tests/report/
+/vendor/
