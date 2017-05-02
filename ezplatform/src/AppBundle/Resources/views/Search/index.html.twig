@@ -1,5 +1,9 @@
 {% include 'AppBundle:Bundle:header.html.twig' %}
 
-Hello Homepage!
+{% block content %}
+    {{ render(controller('AppBundle:Search:getArticles', {
+		parentLocationId: 54,
+	}))}}
+{% endblock %}
 
 {% include 'AppBundle:Bundle:footer.html.twig' %}

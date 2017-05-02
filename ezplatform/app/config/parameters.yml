@@ -1,13 +1,9 @@
-# This file is a "template" of what your parameters.yml file should look like
+# This file is auto-generated during the composer install
 parameters:
-    # A secret key that's used to generate certain security-related tokens
     secret: ThisEzPlatformTokenIsNotSoSecretChangeIt
-
-    # Settings for database backend used by Doctrine DBAL
-    # In turn used for Content Repository Persistence, and default database powered search engine
     database_driver: pdo_mysql
     database_host: localhost
-    database_port: ~
+    database_port: null
     database_name: ezplatform
     database_user: root
-    database_password:
+    database_password: null
