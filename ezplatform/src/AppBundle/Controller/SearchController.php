@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use eZ\Bundle\EzPublishCoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,13 +13,9 @@ class SearchController extends Controller
 {
     /**
      * @Route("/", name="app_search_index")
+     * @Template("AppBundle::Search/index.html.twig")
      */
     public function indexAction(Request $request)
     {
-        $response = new Response();
-        $response->headers->set('Content-Type', 'text/html');
-        $response->setContent('<html><body><h1>Hello world!</h1></body></html>');
-        $response->setStatusCode(Response::HTTP_OK);
-        return $response;
     }
 }
