@@ -7,4 +7,5 @@ parameters:
     database_name: ezplatform
     database_user: root
     database_password: null
-    
+    search_engine: solr
+    solr_dsn: 'http://localhost:8983/solr'
