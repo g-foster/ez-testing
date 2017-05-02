@@ -19,6 +19,10 @@
     <i class="fa fa-twitter w3-hover-opacity"></i>
     <i class="fa fa-linkedin w3-hover-opacity"></i>
   </div>
+
+  {% block loginform %}
+      {{ render(controller('AppBundle:Auth:displayForm'))}}
+  {% endblock %}
 </nav>
 
 <!-- Overlay effect when opening sidebar on small screens -->
