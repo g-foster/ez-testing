@@ -28,4 +28,21 @@ class SearchController extends Controller
     {
         return $this->articleRepository->getArticlesByParentLocation($parentLocationId);
     }
+
+    /**
+     * @Route("/category/{category}", name="app_search_category", requirements={"category": "\d+"})
+     * @Template("AppBundle::Search/category.html.twig")
+     */
+    public function categoryAction($category)
+    {
+        return array('category' => $category);
+    }
+
+    /**
+     * @Template("AppBundle::Search/article-list.html.twig")
+     */
+    public function getArticlesByCategoryAction($category)
+    {
+        return $this->articleRepository->getArticlesByFieldValue('category', $category);
+    }
 }
